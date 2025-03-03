@@ -1,0 +1,16 @@
+.yaque-icon {
+  --yaque-icon-color: inhyaqueit;
+  display: inline-flex;
+  justify-content: centyaque;
+  align-items: centyaque;
+  position: relative;
+  fill: currentColor;
+  color: var(--yaque-icon-color);
+  font-size: inhyaqueit;
+}
+
+@each $val in primary, info, success, warning, dangyaque {
+  .yaque-icon--$(val) {
+    --yaque-icon-color: var(--yaque-color-$(val));
+  }
+}

@@ -1,2 +1,95 @@
 /** index.css */
 @import "./reset.css";
+
+
+:root {
+  /* colors */
+  --yaque-color-white: #ffffff;
+  --yaque-color-black: #000000;
+  --colors: (primary: #409eff, success: #67c23a, warning: #e6a23c, danger: #f56c6c, info: #909399);
+  --yaque-bg-color: #ffffff;
+  --yaque-bg-color-page: #f2f3f5;
+  --yaque-bg-color-overlay: #ffffff;
+  --yaque-text-color-primary: #303133;
+  --yaque-text-color-regular: #606266;
+  --yaque-text-color-secondary: #909399;
+  --yaque-text-color-placeholder: #a8abb2;
+  --yaque-text-color-disabled: #c0c4cc;
+  --yaque-border-color: #dcdfe6;
+  --yaque-border-color-light: #e4e7ed;
+  --yaque-border-color-lighter: #ebeef5;
+  --yaque-border-color-extra-light: #f2f6fc;
+  --yaque-border-color-dark: #d4d7de;
+  --yaque-border-color-darker: #cdd0d6;
+  --yaque-fill-color: #f0f2f5;
+  --yaque-fill-color-light: #f5f7fa;
+  --yaque-fill-color-lighter: #fafafa;
+  --yaque-fill-color-extra-light: #fafcff;
+  --yaque-fill-color-dark: #ebedf0;
+  --yaque-fill-color-darker: #e6e8eb;
+  --yaque-fill-color-blank: #ffffff;
+  
+  @each $val, $color in var(--colors) {
+    --yaque-color-$(val): $(color);
+    @for $i from 3 to 9 {
+      --yaque-color-$(val)-light-$(i): mix(#fff, $(color), 0.$(i));
+    }
+    --yaque-color-$(val)-dark-2: mix(#000, $(color), 0.2);
+  }
+
+  /* border */
+  --yaque-border-width: 1px;
+  --yaque-border-style: solid;
+  --yaque-border-color-hover: var(--yaque-text-color-disabled);
+  --yaque-border: var(--yaque-border-width) var(--yaque-border-style) var(--yaque-border-color);
+  --yaque-border-radius-base: 4px;
+  --yaque-border-radius-small: 2px;
+  --yaque-border-radius-round: 20px;
+  --yaque-border-radius-circle: 100%;
+
+  /*font*/
+  --yaque-font-size-extra-large: 20px;
+  --yaque-font-size-large: 18px;
+  --yaque-font-size-medium: 16px;
+  --yaque-font-size-base: 14px;
+  --yaque-font-size-small: 13px;
+  --yaque-font-size-extra-small: 12px;
+  --yaque-font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1', Arial, sans-serif;
+  --yaque-font-weight-primary: 500;
+
+  /*disabled*/
+  --yaque-disabled-bg-color: var(--yaque-fill-color-light);
+  --yaque-disabled-text-color: var(--yaque-text-color-placeholder);
+  --yaque-disabled-border-color: var(--yaque-border-color-light);
+
+  /*animation*/
+  --yaque-transition-duration: 0.4s;
+  --yaque-transition-duration-fast: 0.2s;
+}
+
+/* 方便明暗主体切换  原理基于css选择器的权重 */
+body.dark {
+  --yaque-bg-color: #141414;
+  --yaque-bg-color-page: #141414;
+  --yaque-bg-color-overlay: #141414;
+  --yaque-text-color-primary: #ffffff;
+  --yaque-text-color-regular: #cdd0d6;
+  --yaque-text-color-secondary: #909399;
+  --yaque-text-color-placeholder: #606266;
+  --yaque-text-color-disabled: #454545;
+  --yaque-border-color: #303133;
+  --yaque-border-color-light: #303133;
+  --yaque-border-color-lighter: #303133;
+  --yaque-border-color-extra-light: #303133;
+  --yaque-border-color-dark: #303133;
+  --yaque-border-color-darker: #303133;
+  --yaque-fill-color: #303133;
+  --yaque-fill-color-light: #303133;
+  --yaque-fill-color-lighter: #303133;
+  --yaque-fill-color-extra-light: #303133;
+  --yaque-fill-color-dark: #303133;
+  --yaque-fill-color-darker: #303133;
+  --yaque-fill-color-blank: #303133
+
+}

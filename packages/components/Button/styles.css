@@ -1,0 +1,199 @@
+.yaque-button-group {
+  --yaque-button-group-border-color: var(--yaque-border-color-lighter);
+}
+.yaque-button {
+  --yaque-button-font-weight: var(--yaque-font-weight-primary);
+  --yaque-button-border-color: var(--yaque-border-color);
+  --yaque-button-bg-color: var(--yaque-fill-color-blank);
+  --yaque-button-text-color: var(--yaque-text-color-regular);
+  --yaque-button-disabled-text-color: var(--yaque-disabled-text-color);
+  --yaque-button-disabled-bg-color: var(--yaque-fill-color-blank);
+  --yaque-button-disabled-border-color: var(--yaque-border-color-light);
+  --yaque-button-hover-text-color: var(--yaque-color-primary);
+  --yaque-button-hover-bg-color: var(--yaque-color-primary-light-9);
+  --yaque-button-hover-border-color: var(--yaque-color-primary-light-7);
+  --yaque-button-active-text-color: var(--yaque-button-hover-text-color);
+  --yaque-button-active-border-color: var(--yaque-color-primary);
+  --yaque-button-active-bg-color: var(--yaque-button-hover-bg-color);
+  --yaque-button-outline-color: var(--yaque-color-primary-light-5);
+  --yaque-button-active-color: var(--yaque-text-color-primary);
+}
+
+.yaque-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  height: 32px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: var(--yaque-button-text-color);
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  transition: 0.1s;
+  font-weight: var(--yaque-button-font-weight);
+  user-select: none;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  background-color: var(--yaque-button-bg-color);
+  border: var(--yaque-border);
+  border-color: var(--yaque-button-border-color);
+  padding: 8px 15px;
+  font-size: var(--yaque-font-size-base);
+  border-radius: var(--yaque-border-radius-base);
+  & + & {
+    margin-left: 12px;
+  }
+  &:hover,
+  &:focus {
+    color: var(--yaque-button-hover-text-color);
+    border-color: var(--yaque-button-hover-border-color);
+    background-color: var(--yaque-button-hover-bg-color);
+    outline: none;
+  }
+  &:active {
+    color: var(--yaque-button-active-text-color);
+    border-color: var(--yaque-button-active-border-color);
+    background-color: var(--yaque-button-active-bg-color);
+    outline: none;
+  }
+  /*plain*/
+  &.is-plain {
+    --yaque-button-hover-text-color: var(--yaque-color-primary);
+    --yaque-button-hover-bg-color: var(--yaque-fill-color-blank);
+    --yaque-button-hover-border-color: var(--yaque-color-primary);
+  }
+  /*round*/
+  &.is-round {
+    border-radius: var(--yaque-border-radius-round);
+  }
+  /*circle*/
+  &.is-circle {
+    border-radius: 50%;
+    padding: 8px;
+  }
+  /*disabled*/
+  &.is-loading,
+  &.is-disabled,
+  &.is-disabled:hover,
+  &.is-disabled:focus,
+  &[disabled],
+  &[disabled]:hover,
+  &[disabled]:focus {
+    color: var(--yaque-button-disabled-text-color);
+    cursor: not-allowed;
+    background-image: none;
+    background-color: var(--yaque-button-disabled-bg-color);
+    border-color: var(--yaque-button-disabled-border-color);
+  }
+  [class*='er-icon'] {
+    width: 1em;
+    height: 1em;
+  }
+}
+@each $val in primary, success, warning, info, danger {
+  .yaque-button--$(val) {
+    --yaque-button-text-color: var(--yaque-color-white);
+    --yaque-button-bg-color: var(--yaque-color-$(val));
+    --yaque-button-border-color: var(--yaque-color-$(val));
+    --yaque-button-outline-color: var(--yaque-color-$(val)-light-5);
+    --yaque-button-active-color: var(--yaque-color-$(val)-dark-2);
+    --yaque-button-hover-text-color: var(--yaque-color-white);
+    --yaque-button-hover-bg-color: var(--yaque-color-$(val)-light-3);
+    --yaque-button-hover-border-color: var(--yaque-color-$(val)-light-3);
+    --yaque-button-active-bg-color: var(--yaque-color-$(val)-dark-2);
+    --yaque-button-active-border-color: var(--yaque-color-$(val)-dark-2);
+    --yaque-button-disabled-text-color: var(--yaque-color-white);
+    --yaque-button-disabled-bg-color: var(--yaque-color-$(val)-light-5);
+    --yaque-button-disabled-border-color: var(--yaque-color-$(val)-light-5);
+  }
+  .yaque-button--$(val).is-plain {
+    --yaque-button-text-color: var(--yaque-color-$(val));
+    --yaque-button-bg-color: var(--yaque-color-$(val)-light-9);
+    --yaque-button-border-color: var(--yaque-color-$(val)-light-5);
+    --yaque-button-hover-text-color: var(--yaque-color-white);
+    --yaque-button-hover-bg-color: var(--yaque-color-$(val));
+    --yaque-button-hover-border-color: var(--yaque-color-$(val));
+    --yaque-button-active-text-color: var(--yaque-color-white);
+
+    --yaque-button-disabled-text-color: var(--yaque-color-$(val)-light-5);
+    --yaque-button-disabled-bg-color: var(--yaque-color-$(val)-light-9);
+    --yaque-button-disabled-border-color: var(--yaque-color-$(val)-light-8);
+  }
+}
+.yaque-button--large {
+  --yaque-button-size: 40px;
+  height: var(--yaque-button-size);
+  padding: 12px 19px;
+  font-size: var(--yaque-font-size-base);
+  border-radius: var(--yaque-border-radius-base);
+  /*circle*/
+  &.is-circle {
+    border-radius: 50%;
+    padding: 12px;
+  }
+}
+.yaque-button--small {
+  --yaque-button-size: 24px;
+  height: var(--yaque-button-size);
+  padding: 5px 11px;
+  font-size: 12px;
+  border-radius: calc(var(--yaque-border-radius-base) - 1px);
+  /*circle*/
+  &.is-circle {
+    border-radius: 50%;
+    padding: 5px;
+  }
+  [class*='er-icon'] {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.yaque-button-group {
+  display: inline-block;
+  vertical-align: middle;
+
+  &::after {
+    clear: both;
+  }
+  & > :deep(.yaque-button){
+    float: left;
+    position: relative;
+    margin-left: 0;
+    &:first-child{
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right-color: var(--yaque-button-group-border-color);
+    }
+    &:last-child{
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0; 
+      border-left-color: var(--yaque-button-group-border-color);
+    }
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+
+      border-left-color: var(--yaque-button-group-border-color);
+      border-right-color: var(--yaque-button-group-border-color);
+    }
+    &:not(:last-child) {
+      margin-right: -1px;
+    }
+    &:first-child:last-child {
+      border-top-right-radius: var(--yaque-border-radius-base);
+      border-bottom-right-radius: var(--yaque-border-radius-base);
+      border-top-left-radius: var(--yaque-border-radius-base);
+      border-bottom-left-radius: var(--yaque-border-radius-base);
+
+      &.is-round {
+        border-radius: var(--yaque-border-radius-round);
+      }
+
+      &.is-circle {
+        border-radius: 50%;
+      }
+    }
+  }
+}
