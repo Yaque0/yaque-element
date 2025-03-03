@@ -27,6 +27,7 @@
     "lodash-es": "^4.17.21",
     "vue": "^3.4.27",
     "yaque-element": "workspace:*"
+
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.12",
