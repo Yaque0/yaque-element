@@ -4,7 +4,7 @@ import { YaqueButton, YaqueButtonGroup } from "yaque-element";
 
 // 定义 Story 类型，继承自 YaqueButton 组件的 Story
 type story = StoryObj<typeof YaqueButton> & {
-  argTypes: ArgTypes;
+  argTypes?: ArgTypes;
 };
 
 // 配置 Storybook 元数据
@@ -63,45 +63,6 @@ ${val}
 `;
 
 // 默认按钮的 Story 配置
-export const Default: story & { args: { content: string } } = {
-  argTypes: {
-    content: {
-      control: { type: "text" }, // 控制按钮内容的文本输入
-    },
-  },
-  args: {
-    type: "primary", // 默认按钮类型为 primary
-    content: "Button", // 默认按钮文本
-  },
-  render: (args: any) => ({
-    components: { YaqueButton },
-    setup() {
-      return { args };
-    },
-    // 使用 container 包裹按钮组件
-    template: container(
-      `<yaque-button v-bind="args">{{args.content}}</yaque-button>`
-    ),
-  }),
-  play: async ({
-    canvasElement,
-    args,
-    step,
-  }: {
-    canvasElement: HTMLElement;
-    args: any;
-    step: Function;
-  }) => {
-    const canvas = within(canvasElement); // 获取到 Canvas 元素
-    await step("click button", async () => {
-      // 模拟点击按钮
-      await userEvent.click(canvas.getByRole("button"));
-    });
-
-    // 断言 onClick 函数被调用
-    expect(args.onClick).toHaveBeenCalled();
-  },
-};
 export const Circle: story = {
   args: {
     icon: "search",
@@ -115,15 +76,7 @@ export const Circle: story = {
       <yaque-button circle v-bind="args"/>
     `),
   }),
-  play: async ({
-    canvasElement,
-    args,
-    step,
-  }: {
-    canvasElement: HTMLElement;
-    args: any;
-    step: Function;
-  }) => {
+  play: async ({ canvasElement, args, step }) => {
     const canvas = within(canvasElement);
     await step("click button", async () => {
       await userEvent.click(canvas.getByRole("button"));

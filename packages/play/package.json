@@ -20,6 +20,7 @@
     "@storybook/vue3": "8.5.5",
     "@storybook/vue3-vite": "8.5.5",
     "@vitejs/plugin-vue": "^5.2.1",
-    "storybook": "8.5.5"
+    "storybook": "8.5.5",
+    "vite": "^6.2.1"
   }
 }

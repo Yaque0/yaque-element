@@ -1,0 +1,58 @@
+.yaque-collapse {
+  --yaque-collapse-border-color: var(--yaque-border-color-light);
+  --yaque-collapse-header-height: 48px;
+  --yaque-collapse-header-bg-color: var(--yaque-fill-color-blank);
+  --yaque-collapse-header-text-color: var(--yaque-text-color-primary);
+  --yaque-collapse-header-font-size: 13px;
+  --yaque-collapse-content-bg-color: var(--yaque-fill-color-blank);
+  --yaque-collapse-content-font-size: 13px;
+  --yaque-collapse-content-text-color: var(--yaque-text-color-primary);
+  --yaque-collapse-disabled-text-color: var(--yaque-disabled-text-color);
+  --yaque-collapse-disabled-border-color: var(--yaque-border-color-lighter);
+  border-top: 1px solid var(--yaque-collapse-border-color);
+  border-bottom: 1px solid var(--yaque-collapse-border-color);
+}
+
+.yaque-collapse-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--yaque-collapse-header-height);
+  line-height: var(--yaque-collapse-header-height);
+  background-color: var(--yaque-collapse-header-bg-color);
+  color: var(--yaque-collapse-header-text-color);
+  cursor: pointer;
+  font-size: var(--yaque-collapse-header-font-size);
+  font-weight: 500;
+  transition: border-bottom-color var(--yaque-transition-duration);
+  outline: none;
+  border-bottom: 1px solid var(--yaque-collapse-border-color);
+  &.is-disabled {
+    color: var(--yaque-collapse-disabled-text-color);
+    cursor: not-allowed;
+    background-image: none;
+  }
+  &.is-active {
+    border-bottom-color: transparent;
+    .header-angle {
+      transform: rotate(90deg);
+    }
+  }
+  .header-angle {
+    transition: transform var(--yaque-transition-duration);
+  }
+}
+.yaque-collapse-item__content {
+  will-change: height;
+  background-color: var(--yaque-collapse-content-bg-color);
+  overflow: hidden;
+  box-sizing: border-box;
+  font-size: var(--yaque-collapse-content-font-size);
+  color: var(--yaque-collapse-content-text-color);
+  border-bottom: 1px solid var(--yaque-collapse-border-color);
+  padding-bottom: 25px;
+}
+.slide-enter-active,
+.slide-leave-active {
+  transition: height var(--yaque-transition-duration) ease-in-out;
+}
